@@ -15,12 +15,10 @@
   <body>
     <div class="wrapper">
       <header>
+        <p><a href="http://code.jbarker.com/">&larr; code.jbarker.com</a></p>
         <h1>gae-ip-geolocation</h1>
         <p>A simple IP address to geolocation service for use with the Google App Engine cloud platform.</p>
-
         <p class="view"><a href="https://github.com/jbarker/gae-ip-geolocation">View the Project on GitHub <small>jbarker/gae-ip-geolocation</small></a></p>
-
-
         <ul>
           <li><a href="https://github.com/jbarker/gae-ip-geolocation/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="https://github.com/jbarker/gae-ip-geolocation/tarball/master">Download <strong>TAR Ball</strong></a></li>
@@ -28,17 +26,97 @@
         </ul>
       </header>
       <section>
-        <h1>
-<a name="gae-ip-geolocation" class="anchor" href="#gae-ip-geolocation"><span class="octicon octicon-link"></span></a>gae-ip-geolocation</h1>
+        <h1><a name="gae-ip-geolocation" class="anchor" href="#gae-ip-geolocation"><span
+          class="octicon octicon-link"></span></a>gae-ip-geolocation</h1>
+         <p>A simple IP address to geolocation service for use with the Google App Engine cloud platform.</p>
 
-<p>A simple IP address to geolocation service for use with the Google App Engine cloud platform.</p>
+<h2><a name="highlights" class="anchor" href="#highlights"><span class="octicon octicon-link"></span></a>Highlights</h2>
+
+<ul>
+<li>
+<a href="http://json.org/">JSON</a> data format</li>
+<li>Standard <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>
+value for country code</li>
+<li>Region, city, and latitude/longitude (when available)</li>
+</ul>
+
+
+<h2><a name="running" class="anchor" href="#running"><span class="octicon octicon-link"></span></a>Running</h2>
+
+<p>In your web browser, navigate to the URL for your deployed application. For example:</p>
+
+<pre><code>http://[your-app-id].appspot.com/
+</code></pre>
+
+<p>The response will contain the geolocation data for the IP address of your request. For example:</p>
+
+<pre><code>{
+  "Country": "DE",
+  "Region": "be",
+  "City": "berlin",
+  "CityLatLong": "52.519171,13.406091"
+}
+</code></pre>
+
+<p>Please note that <code>CityLatLong</code> may be empty due to limitations of the underlying data available.</p>
+
+
+<h2><a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h2>
+
+<p>This application is intended for use with Google App Engine. If you choose to upload an instance of the application to your Google App Engine account, then you must correctly configure your instance of the application and your overall Google App Engine account.</p>
+
+<p>Use of this application on your Google App Engine account will incur billing charges. All such charges are your responsibility.</p>
+
+
+<h2><a name="future" class="anchor" href="#future"><span class="octicon octicon-link"></span></a>Future</h2>
+
+<p>Possible changes and additions could include:</p>
+
+<ul>
+<li>Support CORS: cross-origin resource sharing</li>
+<li>Support JSONP: JSON with padding</li>
+<li>Additional data fields for the geolocation</li>
+</ul>
+
+
+<h2><a name="development" class="anchor" href="#development"><span class="octicon octicon-link"></span></a>Development</h2>
+
+<p>Developed with:</p>
+
+<ul>
+<li><a href="http://golang.org/">Go</a> 1.1.1</li>
+<li><a href="https://developers.google.com/appengine/">Google App Engine</a> 1.8.1</li>
+</ul>
+
+
+<h2><a name="release-history" class="anchor" href="#release-history"><span class="octicon octicon-link"></span></a>Release History</h2>
+
+<p>0.9.0 - 30 June 2013</p>
+
+<ul>
+<li>Initial version.</li>
+</ul>
+
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/jbarker">jbarker</a></p>
+        <p>This project is maintained by <a href="http://code.jbarker.com/">jbarker</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://www.jbarker.com/analytics/" : "http://www.jbarker.com/analytics/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 7);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://www.jbarker.com/analytics/piwik.php?idsite=7" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->
+
   </body>
 </html>
