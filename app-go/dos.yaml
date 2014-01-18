@@ -1,0 +1,3 @@
+# DoS Protection Service for Go
+# https://developers.google.com/appengine/docs/go/config/dos
+blacklist: 

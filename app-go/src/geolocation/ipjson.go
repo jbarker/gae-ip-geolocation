@@ -14,7 +14,7 @@ type GeoResponse struct {
 }
 
 func init() {
-    http.HandleFunc("/", handler)
+    http.HandleFunc("/api/ip.json", handler)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {

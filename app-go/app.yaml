@@ -1,8 +1,39 @@
-application: [your-app-id]
+# Go Application Configuration
+# https://developers.google.com/appengine/docs/go/config/appconfig
+application: gae-ip-geolocation
 version: 1
 runtime: go
 api_version: go1
 
+error_handlers:
+  - file: error/default_error.html
+
 handlers:
-- url: /.*
+- url: /
+  secure: always
+  static_files: static/index.html
+  upload: static/index.html
+
+- url: /favicon.ico
+  secure: always
+  static_files: static/favicon.ico
+  upload: static/favicon.ico
+
+- url: /robots.txt
+  secure: always
+  static_files: static/robots.txt
+  upload: static/robots.txt
+
+- url: /assets/(.*)
+  secure: always
+  static_files: static/assets/\1
+  upload: static/assets/.*
+
+- url: /api/ip.json
+  secure: always
   script: _go_app
+  
+- url: /.*
+  secure: always
+  static_files: static/default.html
+  upload: static/default.html
