@@ -30,6 +30,12 @@
           class="octicon octicon-link"></span></a>gae-ip-geolocation</h1>
          <p>A simple IP address to geolocation service for use with the Google App Engine cloud platform.</p>
 
+<h2><a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h2>
+
+<p>A demonstration is available at:
+<a href="https://gae-ip-geolocation.appspot.com/">gae-ip-geolocation.appspot.com</a></p>
+
+
 <h2><a name="highlights" class="anchor" href="#highlights"><span class="octicon octicon-link"></span></a>Highlights</h2>
 
 <ul>
@@ -37,7 +43,7 @@
 <a href="http://json.org/">JSON</a> data format</li>
 <li>Standard <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>
 value for country code</li>
-<li>Region, city, and latitude/longitude (when available)</li>
+<li>Region, city, and latitude/longitude</li>
 </ul>
 
 
@@ -45,7 +51,7 @@ value for country code</li>
 
 <p>In your web browser, navigate to the URL for your deployed application. For example:</p>
 
-<pre><code>http://[your-app-id].appspot.com/
+<pre><code>https://[your-app-id].appspot.com/api/ip.json
 </code></pre>
 
 <p>The response will contain the geolocation data for the IP address of your request. For example:</p>
@@ -58,14 +64,12 @@ value for country code</li>
 }
 </code></pre>
 
-<p>Please note that <code>CityLatLong</code> may be empty due to limitations of the underlying data available.</p>
-
 
 <h2><a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h2>
 
 <p>This application is intended for use with Google App Engine. If you choose to upload an instance of the application to your Google App Engine account, then you must correctly configure your instance of the application and your overall Google App Engine account.</p>
 
-<p>Use of this application on your Google App Engine account will incur billing charges. All such charges are your responsibility.</p>
+<p>Use of this application on your Google App Engine account may incur billing charges. All such charges are your responsibility.</p>
 
 
 <h2><a name="future" class="anchor" href="#future"><span class="octicon octicon-link"></span></a>Future</h2>
@@ -84,15 +88,19 @@ value for country code</li>
 <p>Developed with:</p>
 
 <ul>
-<li><a href="http://golang.org/">Go</a> 1.1.1</li>
-<li><a href="https://developers.google.com/appengine/">Google App Engine</a> 1.8.1</li>
+<li><a href="http://golang.org/">Go</a> 1.1.2</li>
+<li><a href="https://developers.google.com/appengine/">Google App Engine</a> 1.8.9</li>
 </ul>
 
 
 <h2><a name="release-history" class="anchor" href="#release-history"><span class="octicon octicon-link"></span></a>Release History</h2>
 
-<p>0.9.0 - 30 June 2013</p>
+<p>0.9.1 - 18 January 2014</p>
+<ul>
+<li>Now uses specific API endpoint. Added basic web content for demo.</li>
+</ul>
 
+<p>0.9.0 - 30 June 2013</p>
 <ul>
 <li>Initial version.</li>
 </ul>
