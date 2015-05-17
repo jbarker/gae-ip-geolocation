@@ -26,35 +26,116 @@
         </ul>
       </header>
       <section>
-        <h1><a name="gae-ip-geolocation" class="anchor" href="#gae-ip-geolocation"><span
-          class="octicon octicon-link"></span></a>gae-ip-geolocation</h1>
-         <p>A simple IP address to geolocation service for use with the Google App Engine cloud platform.</p>
+		  
+<article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
+<a id="user-content-gae-ip-geolocation" class="anchor" href="#gae-ip-geolocation" aria-hidden="true"><span class="octicon octicon-link"></span></a>gae-ip-geolocation</h1>
 
-<h2><a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h2>
+<p>A simple IP address to geolocation service for use with the Google App Engine cloud
+platform.</p>
 
-<p>A demonstration is available at:
-<a href="https://gae-ip-geolocation.appspot.com/">gae-ip-geolocation.appspot.com</a></p>
-
-
-<h2><a name="highlights" class="anchor" href="#highlights"><span class="octicon octicon-link"></span></a>Highlights</h2>
+<h2>
+<a id="user-content-highlights" class="anchor" href="#highlights" aria-hidden="true"><span class="octicon octicon-link"></span></a>Highlights</h2>
 
 <ul>
 <li>
-<a href="http://json.org/">JSON</a> data format</li>
-<li>Standard <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>
+<a href="http://json.org/">JSON</a>
+data format</li>
+<li>Standard
+<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>
 value for country code</li>
 <li>Region, city, and latitude/longitude</li>
+<li>Support for
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">Cross-Origin Resource Sharing</a>
+(CORS)</li>
 </ul>
 
+<h2>
+<a id="user-content-demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
 
-<h2><a name="running" class="anchor" href="#running"><span class="octicon octicon-link"></span></a>Running</h2>
+<p>A basic demonstration of the service is available at:</p>
+
+<p><a href="https://gae-ip-geolocation.appspot.com/">gae-ip-geolocation.appspot.com</a></p>
+
+<p>Note that this instance of the service does not have CORS enabled. You must deploy your
+own instance with CORS enabled in order to see some functionality.</p>
+
+<h2>
+<a id="user-content-running" class="anchor" href="#running" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running</h2>
+
+<p>To see the service in action, you may deploy the service to the local development server
+or deploy to Google App Engine. Additionally, you may run a demo client locally that uses
+the service on Google App Engine.</p>
+
+<h3>
+<a id="user-content-running-on-the-development-server" class="anchor" href="#running-on-the-development-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running on the development server</h3>
+
+<p>In your favorite shell, set your working directory to the application's root directory.
+Then run the service on the
+<a href="https://cloud.google.com/appengine/docs/go/tools/devserver">development server</a>
+with <code>goapp</code>:</p>
+
+<pre><code>$ goapp serve -port 8081
+</code></pre>
+
+<p>In your web browser, navigate to the URL for your local application. For example:</p>
+
+<pre><code>http://localhost:8081/
+</code></pre>
+
+<p>You can directly load the geolocation API response at the URL:</p>
+
+<pre><code>http://localhost:8081/api/ip.json
+</code></pre>
+
+<p>The response content will be similar to the following:</p>
+
+<pre><code>{
+  "Country": "ZZ",
+  "Region": "",
+  "City": "",
+  "CityLatLong": ""
+}
+</code></pre>
+
+<p>Running the service with the development server does not provide a useful geolocation. In
+order to have a useful geolocation, first
+<a href="https://cloud.google.com/appengine/docs/go/tools/uploadinganapp">upload the app</a>
+to Google App Engine and then access the service with a public IP address.</p>
+
+<h3>
+<a id="user-content-running-on-google-app-engine" class="anchor" href="#running-on-google-app-engine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running on Google App Engine</h3>
+
+<p>You must first update the application configuration to use the registered
+<a href="https://console.developers.google.com/project">project name</a>
+for your deployed application. Go to the file <code>./app-go/app.yaml</code> and change the line
+beginning with <code>application:</code> to use the project name for your application:</p>
+
+<pre><code>application: [your-app-id]
+</code></pre>
+
+<p>Set your working directory to the application's root directory. Then deploy the service
+to Google App Engine with <code>goapp</code>:</p>
+
+<pre><code>$ goapp deploy
+</code></pre>
+
+<p>After a successful deployment you will see a message such as:</p>
+
+<pre><code>12:00 PM Completed update of app: [your-app-id], version: 1
+</code></pre>
 
 <p>In your web browser, navigate to the URL for your deployed application. For example:</p>
+
+<pre><code>https://[your-app-id].appspot.com/
+</code></pre>
+
+<p>You can directly load the geolocation API response at the URL:</p>
 
 <pre><code>https://[your-app-id].appspot.com/api/ip.json
 </code></pre>
 
-<p>The response will contain the geolocation data for the IP address of your request. For example:</p>
+<p>The response will contain the geolocation data for the IP address of your request. For
+example:</p>
 
 <pre><code>{
   "Country": "DE",
@@ -64,46 +145,128 @@ value for country code</li>
 }
 </code></pre>
 
+<h3>
+<a id="user-content-running-the-local-demo-client" class="anchor" href="#running-the-local-demo-client" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running the local demo client</h3>
 
-<h2><a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h2>
+<p>You should update the local demo client to use the URL for your deployed application. Go
+to the file <code>./demo/static/index.html</code> and change the line beginning with <code>url:</code> to use
+your application's URL:</p>
 
-<p>This application is intended for use with Google App Engine. If you choose to upload an instance of the application to your Google App Engine account, then you must correctly configure your instance of the application and your overall Google App Engine account.</p>
+<pre><code>url: 'https://[your-app-id].appspot.com/api/ip.json',
+</code></pre>
 
-<p>Use of this application on your Google App Engine account may incur billing charges. All such charges are your responsibility.</p>
+<p>Set your working directory to the repository directory <code>./demo</code>. Then run the demo client 
+with <code>demo.go</code>:</p>
 
+<pre><code>$ go run demo.go -p 8777
+</code></pre>
 
-<h2><a name="future" class="anchor" href="#future"><span class="octicon octicon-link"></span></a>Future</h2>
+<p>In your web browser, navigate to the URL for the local demo client. For example:</p>
+
+<pre><code>http://localhost:8777/
+</code></pre>
+
+<p>The content of the web page will likely display an error message. For example:</p>
+
+<pre><code>error: please see your web browser console for details
+</code></pre>
+
+<p>The web console will have a summary of the error similar to this following:</p>
+
+<pre><code>XMLHttpRequest cannot load https://[your-app-id].appspot.com/api/ip.json.
+No 'Access-Control-Allow-Origin' header is present on the requested resource.
+Origin 'http://localhost:8777' is therefore not allowed access.
+</code></pre>
+
+<p>This is because the geolocation service is by default configured with CORS disabled. </p>
+
+<h3>
+<a id="user-content-enable-cors-on-your-service" class="anchor" href="#enable-cors-on-your-service" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enable CORS on your service</h3>
+
+<p><strong>WARNING</strong>: Enabling CORS without further modifications will allow all client requests
+to use the geolocation service. This may result in billing charges to your Google App
+Engine account.</p>
+
+<p>Go to the file <code>./app-go/src/geolocation/ipjson.go</code> and change the line beginning with
+<code>enableCORS</code> to:</p>
+
+<pre><code>enableCORS bool = true
+</code></pre>
+
+<p>Then deploy your application to Google App Engine.</p>
+
+<pre><code>$ goapp deploy
+</code></pre>
+
+<p>In your web browser, navigate to the URL for the local demo client. For example:</p>
+
+<pre><code>http://localhost:8777/
+</code></pre>
+
+<p>The content of the web page will load the geolocation data for the IP address of your
+request. For example:</p>
+
+<pre><code>{
+  "Country": "DE",
+  "Region": "be",
+  "City": "berlin",
+  "CityLatLong": "52.519171,13.406091"
+}
+</code></pre>
+
+<h2>
+<a id="user-content-notes" class="anchor" href="#notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes</h2>
+
+<p>This application is intended for use with Google App Engine. If you choose to upload an
+instance of the application to your Google App Engine account, then you must correctly
+configure your instance of the application and your overall Google App Engine account.</p>
+
+<p>Use of this application on your Google App Engine account may incur billing charges. All
+such charges are your responsibility.</p>
+
+<h2>
+<a id="user-content-future" class="anchor" href="#future" aria-hidden="true"><span class="octicon octicon-link"></span></a>Future</h2>
 
 <p>Possible changes and additions could include:</p>
 
 <ul>
-<li>Support CORS: cross-origin resource sharing</li>
 <li>Support JSONP: JSON with padding</li>
 <li>Additional data fields for the geolocation</li>
 </ul>
 
-
-<h2><a name="development" class="anchor" href="#development"><span class="octicon octicon-link"></span></a>Development</h2>
+<h2>
+<a id="user-content-development" class="anchor" href="#development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Development</h2>
 
 <p>Developed with:</p>
 
 <ul>
-<li><a href="http://golang.org/">Go</a> 1.1.2</li>
-<li><a href="https://developers.google.com/appengine/">Google App Engine</a> 1.8.9</li>
+<li>
+<a href="https://golang.org/">Go</a> 1.4.2</li>
+<li>
+<a href="https://cloud.google.com/appengine/docs">Google App Engine</a> 1.9.20</li>
 </ul>
 
+<h2>
+<a id="user-content-release-history" class="anchor" href="#release-history" aria-hidden="true"><span class="octicon octicon-link"></span></a>Release History</h2>
 
-<h2><a name="release-history" class="anchor" href="#release-history"><span class="octicon octicon-link"></span></a>Release History</h2>
+<p>0.9.2 - 17 May 2015</p>
+
+<ul>
+<li>Added CORS support, caching response headers, client-side demo, and documentation.</li>
+</ul>
 
 <p>0.9.1 - 18 January 2014</p>
+
 <ul>
 <li>Now uses specific API endpoint. Added basic web content for demo.</li>
 </ul>
 
 <p>0.9.0 - 30 June 2013</p>
+
 <ul>
 <li>Initial version.</li>
 </ul>
+</article>
 
       </section>
       <footer>
