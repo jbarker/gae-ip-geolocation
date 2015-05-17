@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>demo gae-ip-geolocation</title>
+        <style>
+            .preformatted {
+                font-family: monospace;
+                white-space: pre;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>demo</h1>
+        <div class="preformatted">...</div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+        <script>
+    		$.ajax({
+                type: 'GET',
+                url: 'https://gae-ip-geolocation.appspot.com/api/ip.json',
+                dataType: 'json',
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('div').text("error: please see your web browser console for details");
+                    return;
+                },
+                success: function (data, textStatus, jqXHR) {
+                    $('div').text(JSON.stringify(data, null, '    '));
+                    return;
+                }
+             });
+        </script>
+
+    </body>
+</html>
